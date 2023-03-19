@@ -42,9 +42,7 @@ namespace AddressBookMulti.DAL
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_User_Master_SelectByUserNamePassword");
                 
                 sqlDB.AddInParameter(dbCMD, "UserName", SqlDbType.NVarChar, UserName);
-
                 sqlDB.AddInParameter(dbCMD, "Password", SqlDbType.NVarChar, Password);
-
 
                 DataTable dt = new DataTable();
                 using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
@@ -73,7 +71,6 @@ namespace AddressBookMulti.DAL
                 sqlDB.AddInParameter(dbCMD, "UserName", SqlDbType.VarChar, UserName);
                 sqlDB.AddInParameter(dbCMD, "Password", SqlDbType.VarChar, Password);
                 sqlDB.AddInParameter(dbCMD, "DisplayName", SqlDbType.VarChar, DisplayName);
-
                 sqlDB.AddInParameter(dbCMD, "Email", SqlDbType.VarChar, Email);
                 sqlDB.AddInParameter(dbCMD, "MobileNo", SqlDbType.VarChar, MobileNo);
                 sqlDB.AddInParameter(dbCMD, "CreationDate", SqlDbType.DateTime, CreationDate);
@@ -81,7 +78,9 @@ namespace AddressBookMulti.DAL
 
                 var vResult = sqlDB.ExecuteScalar(dbCMD);
                 if (vResult == null)
+                {
                     return null;
+                }
 
                 return (decimal)Convert.ChangeType(vResult, vResult.GetType());
             }

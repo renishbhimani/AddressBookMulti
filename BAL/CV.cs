@@ -3,7 +3,6 @@
     public static class CV
     {
         private static IHttpContextAccessor _httpContextAccessor;
-
         static CV()
         {
             _httpContextAccessor = new HttpContextAccessor();
@@ -18,7 +17,6 @@
             }
             return UserName;
         }
-
         public static int? UserID()
         {
             int? UserID = null;

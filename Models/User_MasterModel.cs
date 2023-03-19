@@ -13,11 +13,9 @@ namespace AddressBookMulti.Models
 
         [Required]
         public string Password { get; set; }
-
         public string DisplayName { get; set; }
         public string Email { get; set; }
         public string MobileNo { get; set; }
-
         public DateTime CreationDate { get; set; }
         public DateTime ModificationDate { get; set; }
 

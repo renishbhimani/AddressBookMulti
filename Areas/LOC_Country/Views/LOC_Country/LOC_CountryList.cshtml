@@ -6,14 +6,8 @@
 @using System.Data
 @model DataTable
 
-
-
-
 <div class="page-content-wrapper">
-    <!-- BEGIN CONTENT BODY -->
     <div class="page-content">
-        <!-- BEGIN PAGE HEADER-->
-        <!-- BEGIN PAGE BAR -->
         <div class="page-bar">
             <ul class="page-breadcrumb">
                 <li>
@@ -24,14 +18,7 @@
                     <span>Country List</span>
                 </li>
             </ul>
-
         </div>
-        <!-- END PAGE BAR -->
-        <!-- BEGIN PAGE TITLE-->
-       
-
-       
-
         <div class="portlet light bordered margin-top-10">
             <div class="portlet-title">
                 <div class="caption font-dark">
@@ -71,7 +58,6 @@
                                 <td>@dr["CountryCode"]</td>
                                 <td>@Convert.ToDateTime(dr["CreationDate"]).ToString("dd-MM-yyyy")</td>
                                 <td>@Convert.ToDateTime(dr["ModificationDate"]).ToString("dd-MM-yyyy")</td>
-
                                 <td class="text-center">
                                     <form method="post" asp-area="LOC_Country" asp-controller="LOC_Country" asp-action="Delete">
                                         <input type="hidden" name="CountryID" value="@Convert.ToInt32(dr["CountryID"])">
@@ -85,11 +71,7 @@
                 </table>
             </div>
         </div>
-
-
     </div>
-    <!-- END CONTENT BODY -->
-
 </div>
 
 

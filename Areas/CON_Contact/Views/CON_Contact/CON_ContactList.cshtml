@@ -6,14 +6,8 @@
 @using System.Data
 @model DataTable
 
-
-
-
 <div class="page-content-wrapper">
-    <!-- BEGIN CONTENT BODY -->
     <div class="page-content">
-        <!-- BEGIN PAGE HEADER-->
-        <!-- BEGIN PAGE BAR -->
         <div class="page-bar">
             <ul class="page-breadcrumb">
                 <li>
@@ -24,14 +18,7 @@
                     <span>Contact List</span>
                 </li>
             </ul>
-
         </div>
-        <!-- END PAGE BAR -->
-        <!-- BEGIN PAGE TITLE-->
-
-
-
-
         <div class="portlet light bordered margin-top-10">
             <div class="portlet-title">
                 <div class="caption font-dark">
@@ -60,7 +47,6 @@
                         <tr class="">
                             <th>Action</th>
                             <th>Photo</th>
-
                             <th>Contact ID</th>
                             <th>Country Name</th>
                             <th>State Name</th>
@@ -85,7 +71,6 @@
                         @foreach (DataRow dr in Model.Rows)
                         {
                             <tr>
-                               
                                 <td class="text-center">
                                     <form method="post" asp-area="CON_Contact" asp-controller="CON_Contact" asp-action="Delete">
                                         <input type="hidden" name="ContactID" value="@Convert.ToInt32(dr["ContactID"])">
@@ -93,14 +78,12 @@
                                         <a class="btn btn-info btn-xs" asp-area="CON_Contact" asp-controller="CON_Contact" asp-action="Add" asp-route-contactid="@Convert.ToInt32(dr["ContactID"])"><i class="fa fa-pencil"></i></a>
                                     </form>
                                 </td>
-
                                 <td><img src="@Url.Content(dr["PhotoPath"].ToString())" alt="@dr["CountryName"]" style="height:50px; width:50px"></td>
                                 <td>@dr["ContactID"]</td>
                                 <td>@dr["CountryName"]</td>
                                 <td>@dr["StateName"]</td>
                                 <td>@dr["CityName"]</td>
                                 <td>@dr["ContactCategoryName"]</td>
-
                                 <td>@dr["ContactName"]</td>
                                 <td>@dr["Address"]</td>
                                 <td>@dr["PinCode"]</td>
@@ -114,18 +97,13 @@
                                 <td>@dr["Gender"]</td>
                                 <td>@Convert.ToDateTime(dr["CreationDate"]).ToString("dd-MM-yyyy")</td>
                                 <td>@Convert.ToDateTime(dr["ModificationDate"]).ToString("dd-MM-yyyy")</td>
-
                             </tr>
                         }
                     </tbody>
                 </table>
             </div>
         </div>
-
-
     </div>
-    <!-- END CONTENT BODY -->
-
 </div>
 
 

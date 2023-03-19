@@ -22,9 +22,7 @@ namespace AddressBookMulti.Areas.LOC_Country.Controllers
 
             LOC_DAL dalLOC = new LOC_DAL();
             DataTable dt = dalLOC.dbo_PR_LOC_Country_SelectAll();
-
             return View("LOC_CountryList", dt);
-
             
         }
         #endregion
@@ -67,9 +65,7 @@ namespace AddressBookMulti.Areas.LOC_Country.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 LOC_DAL dalLOC = new LOC_DAL();
-
 
                 if (modelLOC_Country.CountryID == null)
                 {
@@ -77,16 +73,13 @@ namespace AddressBookMulti.Areas.LOC_Country.Controllers
                     if (Convert.ToBoolean(dalLOC.dbo_PR_LOC_Country_Insert(modelLOC_Country)))
                     {
                         TempData["CountryInsertMessage"] = "Record inserted successfully";
-
                     }
                 }
                 else
                 {
                     if (Convert.ToBoolean(dalLOC.dbo_PR_LOC_Country_UpdateByPK(modelLOC_Country)))
                     {
-
                         TempData["CountryUpdateMessage"] = "Record Update Successfully";
-
                     }
                     return RedirectToAction("Index");
                 }
@@ -95,6 +88,7 @@ namespace AddressBookMulti.Areas.LOC_Country.Controllers
 
             return RedirectToAction("Add");
         }
+
         #endregion
 
         #region Delete
@@ -112,14 +106,12 @@ namespace AddressBookMulti.Areas.LOC_Country.Controllers
         }
         #endregion
 
-
         #region Filter Records
         public IActionResult Filter(LOC_CountryModel modelLOC_Country)
         {
             LOC_DAL dalLOC = new LOC_DAL();
             DataTable dt = dalLOC.SearchCountryTable(modelLOC_Country.CountryName, modelLOC_Country.CountryCode);
             return View("LOC_CountryList", dt);
-
         }
         #endregion
 

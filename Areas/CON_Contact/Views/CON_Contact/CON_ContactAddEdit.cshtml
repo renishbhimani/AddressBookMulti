@@ -7,10 +7,7 @@
 @model AddressBookMulti.Areas.CON_Contact.Models.CON_ContactModel
 
 <div class="page-content-wrapper">
-    <!-- BEGIN CONTENT BODY -->
     <div class="page-content">
-        <!-- BEGIN PAGE HEADER-->
-        <!-- BEGIN PAGE BAR -->
         <div class="page-bar">
             <ul class="page-breadcrumb">
                 <li>
@@ -21,10 +18,7 @@
                     <span>Contact Add/Edit Page</span>
                 </li>
             </ul>
-
         </div>
-        <!-- END PAGE BAR -->
-        <!-- BEGIN PAGE TITLE-->
         <div class="portlet light bordered">
             <div class="portlet-title">
                 <div class="caption font-dark">
@@ -61,7 +55,6 @@
                                 <span asp-validation-for="StateID" class="text-danger"></span>
                             </div>
                         </div>
-
                         <div class="row" style="padding-left:22px; margin-bottom:22px">
                             <div class="col-md-2">
                                 <span style="color: #ff0000">*</span>
@@ -85,9 +78,7 @@
                                 </select>
                                 <span asp-validation-for="ContactCategoryID" class="text-danger"></span>
                             </div>
-
                         </div>
-
                         <div class="row" style="padding-left:22px; margin-bottom:22px">
                             <div class="col-md-2">
                                 <span style="color: #ff0000">*</span>
@@ -107,9 +98,7 @@
                                 <input type="text" placeholder="Enter Address" asp-for="Address" class="form-control" />
                                 <span asp-validation-for="Address" class="text-danger"></span>
                             </div>
-
                         </div>
-
                         <div class="row" style="padding-left:22px; margin-bottom:22px">
                             <div class="col-md-2">
                                 <span style="color: #ff0000">*</span>
@@ -129,9 +118,7 @@
                                 <input type="text" placeholder="Enter Mobile No" asp-for="MobileNo" class="form-control" />
                                 <span asp-validation-for="MobileNo" class="text-danger"></span>
                             </div>
-
                         </div>
-
                         <div class="row" style="padding-left:22px; margin-bottom:22px">
                             <div class="col-md-2">
                                 <span style="color: #ff0000">*</span>
@@ -151,9 +138,7 @@
                                 <input type="email" placeholder="Enter Email" asp-for="Email" class="form-control" />
                                 <span asp-validation-for="Email" class="text-danger"></span>
                             </div>
-
                         </div>
-
                         <div class="row" style="padding-left:22px; margin-bottom:22px">
                             <div class="col-md-2">
                                 <span style="color: #ff0000">*</span>
@@ -173,13 +158,7 @@
                                 <input type="text" placeholder="Enter LinkedIn Id" asp-for="LinkedIn" class="form-control" />
                                 <span asp-validation-for="LinkedIn" class="text-danger"></span>
                             </div>
-
                         </div>
-
-
-
-
-
                         <div class="row" style="padding-left:22px; margin-bottom:22px">
                             <div class="col-md-2">
                                 <span style="color: #ff0000">*</span>
@@ -199,9 +178,7 @@
                                 <input type="text" placeholder="Enter Instagram Id" asp-for="Insta" class="form-control" />
                                 <span asp-validation-for="Insta" class="text-danger"></span>
                             </div>
-
                         </div>
-
                          <div class="row" style="padding-left:22px; margin-bottom:22px">
                             <div class="col-md-2">
                                 <span style="color: #ff0000">*</span>
@@ -221,41 +198,24 @@
                                 <input type="file" placeholder="Upload Photo" asp-for="File" class="form-control" />
                                 <span asp-validation-for="PhotoPath" class="text-danger"></span>
                             </div>
-
                         </div>
-                      
-
                         <div class="row removespace">
                             <div class="col-md-5">
                             </div>
-
-
                             <div class="col-md-1">
-
                                 <input type="submit" value="Save" class="btn green-haze p-3" />
-
                             </div>
-
                             <div class="col-md-1">
                                 <a class="btn red-mint" type="submit" value="Cancel" asp-area="CON_Contact" asp-controller="CON_Contact" asp-action="Index">
                                     Cancel
                                 </a>
-
                             </div>
                         </div>
                     </form>
-
                 </div>
-
-
-
             </div>
-
         </div>
-
-
     </div>
-    <!-- END CONTENT BODY -->
 </div>
 
 
@@ -330,7 +290,6 @@
                 $("#CityID").append($("<option></option>").val("").html("Select City"));
             }
         }
-
 
     </script>
 }

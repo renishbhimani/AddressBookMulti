@@ -7,16 +7,13 @@ namespace AddressBookMulti.Areas.LOC_City.Models
     public class LOC_CityModel
     {
         public int? CityID { get; set; }
-
         public int UserID { get; set; }
 
         [Required(ErrorMessage = "Please select State")]
         public int StateID { get; set; }
 
-
         [Required(ErrorMessage = "Please select Country")]
         public int CountryID { get; set; }
-
         public string StateName { get; set; }
 
         [Required(ErrorMessage = "Please enter City name")]
@@ -27,7 +24,6 @@ namespace AddressBookMulti.Areas.LOC_City.Models
         [Required(ErrorMessage = "Please enter Pincode")]
         [DisplayName("Pincode")]
         public string PinCode { get; set; }
-
         public DateTime? CreationDate { get; set; }
         public DateTime? ModificationDate { get; set; }
     }

@@ -31,10 +31,10 @@ namespace AddressBookMulti.Areas.LOC_State.Controllers
             #region Country Drop Down
 
             LOC_DAL dalLOC = new LOC_DAL();
-            DataTable dt = dalLOC.CountryDropDwon();
+            DataTable dataTableByCountryDropDwon = dalLOC.CountryDropDwon();
 
             List<LOC_Country_SelectForDropDownModel> CountryDropDwonListPage = new List<LOC_Country_SelectForDropDownModel>();
-            foreach (DataRow dr in dt.Rows)
+            foreach (DataRow dr in dataTableByCountryDropDwon.Rows)
             {
                 LOC_Country_SelectForDropDownModel modelLOC_Country = new LOC_Country_SelectForDropDownModel();
                 modelLOC_Country.CountryID = Convert.ToInt32(dr["CountryID"]);
@@ -42,21 +42,19 @@ namespace AddressBookMulti.Areas.LOC_State.Controllers
                 CountryDropDwonListPage.Add(modelLOC_Country);
             }
             ViewBag.CountryList = CountryDropDwonListPage;
-            /*conn1.Close();*/
+
             #endregion
 
             #region Select By PK
 
             if (StateID != null)
             {
+                DataTable dt = dalLOC.dbo_PR_LOC_State_SelectByPK(StateID);
 
-                /*LOC_DAL dalLOC = new LOC_DAL();*/
-                DataTable dt1 = dalLOC.dbo_PR_LOC_State_SelectByPK(StateID);
-
-                if (dt1.Rows.Count > 0)
+                if (dt.Rows.Count > 0)
                 {
                     LOC_StateModel modelLOC_State = new LOC_StateModel();
-                    foreach (DataRow dr in dt1.Rows)
+                    foreach (DataRow dr in dt.Rows)
                     {
                         modelLOC_State.CountryID = Convert.ToInt32(dr["CountryID"]);
                         modelLOC_State.StateID = Convert.ToInt32(dr["StateID"]);
@@ -64,12 +62,11 @@ namespace AddressBookMulti.Areas.LOC_State.Controllers
                         modelLOC_State.StateCode = dr["StateCode"].ToString();
                         modelLOC_State.CreationDate = Convert.ToDateTime(dr["CreationDate"]);
                         modelLOC_State.ModificationDate = Convert.ToDateTime(dr["ModificationDate"]);
-
                     }
                     return View("LOC_StateAddEdit", modelLOC_State);
                 }
-
             }
+
             #endregion
 
             return View("LOC_StateAddEdit");
@@ -80,37 +77,28 @@ namespace AddressBookMulti.Areas.LOC_State.Controllers
         [HttpPost]
         public IActionResult Save(LOC_StateModel modelLOC_State)
         {
+             LOC_DAL dalLOC = new LOC_DAL();
 
-            #region Insert
-
-                LOC_DAL dalLOC = new LOC_DAL();
-
-
-                if (modelLOC_State.StateID == null)
+             if (modelLOC_State.StateID == null)
+             {
+                 if (Convert.ToBoolean(dalLOC.dbo_PR_LOC_State_Insert(modelLOC_State)))
+                 {
+                    TempData["StateInsertMessage"] = "Record inserted successfully";
+                 }
+             }
+             else
+             {
+                if (Convert.ToBoolean(dalLOC.dbo_PR_LOC_State_UpdateByPK(modelLOC_State)))
                 {
-
-                    if (Convert.ToBoolean(dalLOC.dbo_PR_LOC_State_Insert(modelLOC_State)))
-                    {
-                        TempData["StateInsertMessage"] = "Record inserted successfully";
-
-                    }
+                   TempData["StateUpdateMessage"] = "Record Update Successfully";
                 }
-                else
-                {
-                    if (Convert.ToBoolean(dalLOC.dbo_PR_LOC_State_UpdateByPK(modelLOC_State)))
-                    {
 
-                        TempData["StateUpdateMessage"] = "Record Update Successfully";
-
-                    }
-                    return RedirectToAction("Index");
-                }
-            
+                return RedirectToAction("Index");
+             }
 
             return RedirectToAction("Add");
-
-            #endregion
         }
+
         #endregion
 
         #region Delete
@@ -123,7 +111,6 @@ namespace AddressBookMulti.Areas.LOC_State.Controllers
                 return RedirectToAction("Index");
             }
             return View("Index");
-
         }
         #endregion
 

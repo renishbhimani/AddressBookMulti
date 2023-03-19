@@ -23,14 +23,12 @@ namespace AddressBookMulti.DAL
                 using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
                 {
                     dt.Load(dr);
-
                 }
                 return dt;
             }
             catch (Exception ex)
             {
                 return null;
-
             }
 
         }
@@ -48,14 +46,12 @@ namespace AddressBookMulti.DAL
                 using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
                 {
                     dt.Load(dr);
-
                 }
                 return dt;
             }
             catch (Exception ex)
             {
                 return null;
-
             }
 
         }
@@ -85,7 +81,7 @@ namespace AddressBookMulti.DAL
         #endregion
 
         #region MST_ContactCategory_DeleteByPK
-        public bool dbo_PR_MST_ContactCategory_SelectAll(int ContactCategoryID)
+        public bool dbo_PR_MST_ContactCategory_DeleteByPKUserID(int ContactCategoryID)
         {
             try
             {
@@ -120,7 +116,6 @@ namespace AddressBookMulti.DAL
                 using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
                 {
                     dt.Load(dr);
-
                 }
                 return dt;
             }
@@ -128,8 +123,6 @@ namespace AddressBookMulti.DAL
             {
                 return null;
             }
-
-
         }
 
         #endregion
@@ -147,7 +140,6 @@ namespace AddressBookMulti.DAL
                 using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
                 {
                     dt.Load(dr);
-
                 }
                 return dt;
             }
@@ -155,8 +147,6 @@ namespace AddressBookMulti.DAL
             {
                 return null;
             }
-
-
         }
 
         #endregion
@@ -315,14 +305,11 @@ namespace AddressBookMulti.DAL
                 using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
                 {
                     dt.Load(dr);
-
                 }
                 return dt;
-
             }
             catch (Exception ex)
             {
-
                 return null;
             }
         }
@@ -342,14 +329,12 @@ namespace AddressBookMulti.DAL
                 using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
                 {
                     dt.Load(dr);
-
                 }
                 return dt;
             }
             catch (Exception ex)
             {
                 return null;
-
             }
         }
 
@@ -369,14 +354,12 @@ namespace AddressBookMulti.DAL
                 using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
                 {
                     dt.Load(dr);
-
                 }
                 return dt;
             }
             catch (Exception ex)
             {
                 return null;
-
             }
         }
 
@@ -396,14 +379,12 @@ namespace AddressBookMulti.DAL
                 using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
                 {
                     dt.Load(dr);
-
                 }
                 return dt;
             }
             catch (Exception ex)
             {
                 return null;
-
             }
         }
 
@@ -429,7 +410,6 @@ namespace AddressBookMulti.DAL
             catch (Exception ex)
             {
                 return null;
-
             }
         }
 

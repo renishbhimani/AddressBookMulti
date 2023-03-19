@@ -37,12 +37,10 @@ namespace AddressBookMulti.Areas.LOC_City.Controllers
             #region Country Drop Down
 
             LOC_DAL dalLOC = new LOC_DAL();
-            DataTable dt1 = dalLOC.CountryDropDwon();
-
+            DataTable dataTableByCountryDropDwon = dalLOC.CountryDropDwon();
 
             List<LOC_Country_SelectForDropDownModel> CountryDropDwonListPage = new List<LOC_Country_SelectForDropDownModel>();
-
-            foreach (DataRow dr in dt1.Rows)
+            foreach (DataRow dr in dataTableByCountryDropDwon.Rows)
             {
                 LOC_Country_SelectForDropDownModel CountryDropDwon = new LOC_Country_SelectForDropDownModel();
                 CountryDropDwon.CountryID = Convert.ToInt32(dr["CountryID"]);
@@ -55,16 +53,12 @@ namespace AddressBookMulti.Areas.LOC_City.Controllers
             List<LOC_State_SelectForDropDownModel> StateDropDwonListPage = new List<LOC_State_SelectForDropDownModel>();
             ViewBag.StateList = StateDropDwonListPage;
 
-
-
             #endregion
-
 
             #region Select By PK
 
             if (CityID != null)
             {
-                /*LOC_DAL dalLOC = new LOC_DAL();*/
                 DataTable dt = dalLOC.dbo_PR_LOC_City_SelectByPK(CityID);
                 if (dt.Rows.Count > 0)
                 {
@@ -84,6 +78,7 @@ namespace AddressBookMulti.Areas.LOC_City.Controllers
                 }
 
             }
+
             #endregion
 
             return View("LOC_CityAddEdit");
@@ -118,10 +113,9 @@ namespace AddressBookMulti.Areas.LOC_City.Controllers
                     return RedirectToAction("Index");
                 }
 
-
-
             return RedirectToAction("Add");
         }
+
         #endregion
 
         #region Delete

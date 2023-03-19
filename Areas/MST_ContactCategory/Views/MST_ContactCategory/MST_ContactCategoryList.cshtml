@@ -6,14 +6,8 @@
 @using System.Data
 @model DataTable
 
-
-
-
 <div class="page-content-wrapper">
-    <!-- BEGIN CONTENT BODY -->
     <div class="page-content">
-        <!-- BEGIN PAGE HEADER-->
-        <!-- BEGIN PAGE BAR -->
         <div class="page-bar">
             <ul class="page-breadcrumb">
                 <li>
@@ -24,14 +18,7 @@
                     <span>Contact Category List</span>
                 </li>
             </ul>
-
         </div>
-        <!-- END PAGE BAR -->
-        <!-- BEGIN PAGE TITLE-->
-
-
-
-
         <div class="portlet light bordered margin-top-10">
             <div class="portlet-title">
                 <div class="caption font-dark">
@@ -66,13 +53,9 @@
                         {
                             <tr>
                                 <td>@dr["ContactCategoryID"]</td>
-
                                 <td>@dr["ContactCategoryName"]</td>
-
                                 <td>@Convert.ToDateTime(dr["CreationDate"]).ToString("dd-MM-yyyy")</td>
                                 <td>@Convert.ToDateTime(dr["ModificationDate"]).ToString("dd-MM-yyyy")</td>
-
-
                                 <td class="text-center">
                                     <form method="post" asp-area="MST_ContactCategory" asp-controller="MST_ContactCategory" asp-action="Delete">
                                         <input type="hidden" name="ContactCategoryID" value="@Convert.ToInt32(dr["ContactCategoryID"])">
@@ -86,14 +69,8 @@
                 </table>
             </div>
         </div>
-
-
     </div>
-    <!-- END CONTENT BODY -->
-
 </div>
 
-
-<div class="clearfix"></div>
 
 

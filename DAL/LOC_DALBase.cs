@@ -16,7 +16,6 @@ namespace AddressBookMulti.DAL
         #region dbo.PR_LOC_Country_SelectAll
         public DataTable dbo_PR_LOC_Country_SelectAll()
         {
-
             try { 
                 SqlDatabase sqlDB = new SqlDatabase(myConnectionString);
                 DbCommand dbCMD = sqlDB.GetStoredProcCommand("PR_LOC_Country_SelectAllByUserID");
@@ -25,14 +24,12 @@ namespace AddressBookMulti.DAL
                 using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
                 {
                     dt.Load(dr);
-
                 }
                 return dt;
             }
             catch (Exception ex)
             {
                 return null;
-
             }
 
         }
@@ -72,14 +69,11 @@ namespace AddressBookMulti.DAL
                 using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
                 {
                     dt.Load(dr);
-
                 }
                 return dt;
-
             }
             catch (Exception ex)
             {
-
                 return null;
             }
         }
@@ -153,7 +147,6 @@ namespace AddressBookMulti.DAL
         #region LOC_SelectByPK
 
         #region LOC_Country_SelectByPK
-
         public DataTable dbo_PR_LOC_Country_SelectByPK( int CountryID)
         {
             try
@@ -166,7 +159,6 @@ namespace AddressBookMulti.DAL
                 using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
                 {
                     dt.Load(dr);
-
                 }
                 return dt;
             }
@@ -194,7 +186,6 @@ namespace AddressBookMulti.DAL
                 using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
                 {
                     dt.Load(dr);
-
                 }
                 return dt;
             }
@@ -221,7 +212,6 @@ namespace AddressBookMulti.DAL
                 using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
                 {
                     dt.Load(dr);
-
                 }
                 return dt;
             }
@@ -255,7 +245,6 @@ namespace AddressBookMulti.DAL
 
                 int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
                 return (vReturnValue == -1 ? false : true);
-
             }
             catch (Exception ex)
             {
@@ -281,7 +270,6 @@ namespace AddressBookMulti.DAL
 
                 int vReturnValue = sqlDB.ExecuteNonQuery(dbCMD);
                 return (vReturnValue == -1 ? false : true);
-
             }
             catch (Exception ex)
             {
@@ -423,14 +411,11 @@ namespace AddressBookMulti.DAL
                 using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
                 {
                     dt.Load(dr);
-
                 }
                 return dt;
-
             }
             catch (Exception ex)
             {
-
                 return null;
             }
         }
@@ -452,14 +437,11 @@ namespace AddressBookMulti.DAL
                 using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
                 {
                     dt.Load(dr);
-
                 }
                 return dt;
-
             }
             catch (Exception ex)
             {
-
                 return null;
             }
         }
@@ -481,14 +463,11 @@ namespace AddressBookMulti.DAL
                 using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
                 {
                     dt.Load(dr);
-
                 }
                 return dt;
-
             }
             catch (Exception ex)
             {
-
                 return null;
             }
         }
@@ -515,7 +494,6 @@ namespace AddressBookMulti.DAL
             catch (Exception ex)
             {
                 return null;
-
             }
         }
 
@@ -535,14 +513,12 @@ namespace AddressBookMulti.DAL
                 using (IDataReader dr = sqlDB.ExecuteReader(dbCMD))
                 {
                     dt.Load(dr);
-
                 }
                 return dt;
             }
             catch (Exception ex)
             {
                 return null;
-
             }
         }
 

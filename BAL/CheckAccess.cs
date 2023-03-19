@@ -17,7 +17,6 @@ namespace MetronicAddressBook.BAL
                 filterContext.Result = new RedirectResult("~/User_Master");
             }
         }
-
         public override void OnResultExecuting(ResultExecutingContext filterContext)
         {
             filterContext.HttpContext.Response.Headers["Cache-Control"] = "no-cache, no-store, must-revalidate";

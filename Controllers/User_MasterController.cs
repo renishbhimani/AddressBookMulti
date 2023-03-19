@@ -7,20 +7,15 @@ namespace AddressBookMulti.Controllers
 {
     public class User_MasterController : Controller
     {
-
         private IConfiguration Configuration;
-
         public User_MasterController(IConfiguration _configuration)
         {
             this.Configuration = _configuration;
         }
-
-        
         public IActionResult Index()
         {
             return View();
         }
-
         [HttpPost]
         public IActionResult Login(User_MasterModel modelUser_Master)
         {
@@ -34,7 +29,6 @@ namespace AddressBookMulti.Controllers
             {
                 error += "<br/>Password is required";
             }
-
             if (error != null)
             {
                 TempData["Error"] = error;
@@ -52,7 +46,6 @@ namespace AddressBookMulti.Controllers
                         HttpContext.Session.SetString("UserID", dr["UserID"].ToString());
                         HttpContext.Session.SetString("Password", dr["Password"].ToString());
                         HttpContext.Session.SetString("DisplayName", dr["DisplayName"].ToString());
-
 
                         break;
                     }

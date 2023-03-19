@@ -14,17 +14,6 @@ namespace AddressBookMulti.Areas.MST_ContactCategory.Controllers
 
     public class MST_ContactCategoryController : Controller
     {
-        #region Configuration
-        private IConfiguration Configuration;
-        public MST_ContactCategoryController(IConfiguration _configuration)
-
-        {
-            Configuration = _configuration;
-        }
-        #endregion
-
-   
-
         #region Index
         public IActionResult Index()
         {
@@ -54,16 +43,11 @@ namespace AddressBookMulti.Areas.MST_ContactCategory.Controllers
                     {
                         model.ContactCategoryID = Convert.ToInt32(dr["ContactCategoryID"]);
                         model.ContactCategoryName = dr["ContactCategoryName"].ToString();
-
                         model.CreationDate = Convert.ToDateTime(dr["CreationDate"]);
                         model.ModificationDate = Convert.ToDateTime(dr["ModificationDate"]);
-
                     }
                     return View("MST_ContactCategoryAddEdit", model);
-
-
                 }
-
             }
             #endregion
 
@@ -77,30 +61,23 @@ namespace AddressBookMulti.Areas.MST_ContactCategory.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 CON_DAL dalCON = new CON_DAL();
-
 
                 if (modelMST_ContactCategory.ContactCategoryID == null)
                 {
-
                     if (Convert.ToBoolean(dalCON.dbo_PR_MST_ContactCategory_Insert(modelMST_ContactCategory)))
                     {
                         TempData["ContactCategoryInsertMessage"] = "Record inserted successfully";
-
                     }
                 }
                 else
                 {
                     if (Convert.ToBoolean(dalCON.dbo_PR_MST_ContactCategory_UpdateByPK(modelMST_ContactCategory)))
                     {
-
                         TempData["ContactCategoryUpdateMessage"] = "Record Update Successfully";
-
                     }
                     return RedirectToAction("Index");
                 }
-
             }
 
             return RedirectToAction("Add");
@@ -110,23 +87,13 @@ namespace AddressBookMulti.Areas.MST_ContactCategory.Controllers
         #region Delete
         public IActionResult Delete(int ContactCategoryID)
         {
-            DataTable dt = new DataTable();
-            SqlConnection conn = new SqlConnection();
+            CON_DAL dalCON = new CON_DAL();
 
-            conn.Open();
-
-            SqlCommand objCmd = conn.CreateCommand();
-            objCmd.CommandType = CommandType.StoredProcedure;
-            objCmd.CommandText = "PR_MST_ContactCategory_DeleteByPK";
-
-            objCmd.Parameters.AddWithValue("@ContactCategoryID", ContactCategoryID);
-
-            objCmd.ExecuteNonQuery();
-
-
-            conn.Close();
-
-            return RedirectToAction("Index");
+            if (Convert.ToBoolean(dalCON.dbo_PR_MST_ContactCategory_DeleteByPKUserID(ContactCategoryID)))
+            {
+                return RedirectToAction("Index");
+            }
+            return View("Index");
         }
         #endregion
 

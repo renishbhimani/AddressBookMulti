@@ -40,10 +40,10 @@ namespace AddressBookMulti.Areas.CON_Contact.Controllers
             #region Country Drop Down
 
             CON_DAL dalCON = new CON_DAL();
-            DataTable dt1 = dalCON.CountryDropDwon();
+            DataTable dataTableByCounryDropDwon = dalCON.CountryDropDwon();
 
             List<LOC_Country_SelectForDropDownModel>  CountryDropDwonListPage = new List<LOC_Country_SelectForDropDownModel>();
-            foreach (DataRow dr in dt1.Rows)
+            foreach (DataRow dr in dataTableByCounryDropDwon.Rows)
             {
                 LOC_Country_SelectForDropDownModel modelLOC_Country = new LOC_Country_SelectForDropDownModel();
                 modelLOC_Country.CountryID = Convert.ToInt32(dr["CountryID"]);
@@ -62,10 +62,10 @@ namespace AddressBookMulti.Areas.CON_Contact.Controllers
 
             #region Contact Category Drop Down
 
-            DataTable dt4 = dalCON.ContactCategoryDropDwon();
+            DataTable dataTableByContactCategoryDropDwon = dalCON.ContactCategoryDropDwon();
 
             List<MST_ContactCategory_SelectForDropDownModel> ContactCategoryDropDwonListPage = new List<MST_ContactCategory_SelectForDropDownModel>();
-            foreach (DataRow dr in dt4.Rows)
+            foreach (DataRow dr in dataTableByContactCategoryDropDwon.Rows)
             {
                 MST_ContactCategory_SelectForDropDownModel modelMST_ContactCategory = new MST_ContactCategory_SelectForDropDownModel();
                 modelMST_ContactCategory.ContactCategoryID = Convert.ToInt32(dr["ContactCategoryID"]);
@@ -79,8 +79,6 @@ namespace AddressBookMulti.Areas.CON_Contact.Controllers
             #region Select By PK
             if (ContactID != null)
             {
-
-                /*CON_DAL dalCON = new CON_DAL();*/
                 DataTable dt = dalCON.dbo_PR_CON_Contact_SelectByPK(ContactID);
 
                 if (dt.Rows.Count > 0)
@@ -145,33 +143,25 @@ namespace AddressBookMulti.Areas.CON_Contact.Controllers
             }
             #endregion
 
+            CON_DAL dalCON = new CON_DAL();
 
-
-          
-                CON_DAL dalCON = new CON_DAL();
-
-
-                if (modelCON_Contact.ContactID == null)
+            if (modelCON_Contact.ContactID == null)
+            {
+                if (Convert.ToBoolean(dalCON.dbo_PR_CON_Contact_Insert(modelCON_Contact)))
                 {
+                    TempData["CountryInsertMessage"] = "Record inserted successfully";
 
-                    if (Convert.ToBoolean(dalCON.dbo_PR_CON_Contact_Insert(modelCON_Contact)))
-                    {
-                        TempData["CountryInsertMessage"] = "Record inserted successfully";
-
-                    }
                 }
-                else
+            }
+            else
+            {
+                if (Convert.ToBoolean(dalCON.dbo_PR_CON_Contact_UpdateByPK(modelCON_Contact)))
                 {
-                    if (Convert.ToBoolean(dalCON.dbo_PR_CON_Contact_UpdateByPK(modelCON_Contact)))
-                    {
-
-                        TempData["CountryUpdateMessage"] = "Record Update Successfully";
-
-                    }
-                    return RedirectToAction("Index");
+                    TempData["CountryUpdateMessage"] = "Record Update Successfully";
                 }
-
-                
+                    
+                return RedirectToAction("Index");
+            }
 
             return RedirectToAction("Add");
         }

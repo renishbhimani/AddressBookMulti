@@ -9,19 +9,14 @@ namespace AddressBookMulti.Areas.CON_Contact.Models
         [Required(ErrorMessage = "Please select Country")]
         public int CountryID { get; set; }
 
-
         [Required(ErrorMessage = "Please select State")]
         public int StateID { get; set; }
-
 
         [Required(ErrorMessage = "Please select City")]
         public int CityID { get; set; }
 
-
         [Required(ErrorMessage = "Please select Contact Category")]
         public int ContactCategoryID { get; set; }
-
-
 
         [Required(ErrorMessage = "Please enter Contact name")]
         [StringLength(10, MinimumLength = 3)]
@@ -31,18 +26,14 @@ namespace AddressBookMulti.Areas.CON_Contact.Models
         public String CityName { get; set; }
         public string ContactCategory { get; set; }
 
-
         [Required(ErrorMessage = "Please enter Address")]
         public string Address { get; set; }
-
 
         [Required(ErrorMessage = "Please enter Pincode")]
         public string PinCode { get; set; }
 
-
         [Required(ErrorMessage = "Please enter Mobile No")]
         public string MobileNo { get; set; }
-
 
         [Required(ErrorMessage = "Please enter Alternet Contact")]
         public string AlternetContact { get; set; }
@@ -65,10 +56,8 @@ namespace AddressBookMulti.Areas.CON_Contact.Models
 
         [Required(ErrorMessage = "Please enter Gender")]
         public string Gender { get; set; }
-
         public DateTime? CreationDate { get; set; }
         public DateTime? ModificationDate { get; set; }
-
         public IFormFile File { get; set; }
         public string PhotoPath { get; set; }
 
