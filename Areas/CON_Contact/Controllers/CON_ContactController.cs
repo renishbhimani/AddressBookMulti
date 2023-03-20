@@ -81,13 +81,17 @@ namespace AddressBookMulti.Areas.CON_Contact.Controllers
             {
                 DataTable dt = dalCON.dbo_PR_CON_Contact_SelectByPK(ContactID);
 
-                if (dt.Rows.Count > 0)
+                if (dt  !=null && dt.Rows.Count > 0)
                 {
                     CON_ContactModel modelCON_Contact = new CON_ContactModel();
                     foreach (DataRow dr in dt.Rows)
                     {
-                        DropDownByCountry(Convert.ToInt32(dr["CountryID"]));
+
+                        if (!dr["CountryID"].Equals(DBNull.Value))
+                            DropDownByCountry(Convert.ToInt32(dr["CountryID"]));
+                        
                         DropDownByState(Convert.ToInt32(dr["StateID"]));
+
                         modelCON_Contact.ContactID = Convert.ToInt32(dr["ContactID"]);
                         modelCON_Contact.CountryID = Convert.ToInt32(dr["CountryID"]);
                         modelCON_Contact.StateID = Convert.ToInt32(dr["StateID"]);
@@ -123,7 +127,22 @@ namespace AddressBookMulti.Areas.CON_Contact.Controllers
         [HttpPost]
         public IActionResult Save(CON_ContactModel modelCON_Contact)
         {
-            #region PhotoPath
+            /*#region Server Side Validation
+            string strError = "";
+
+
+            if (modelCON_Contact.ContactName.Trim() == "")
+                strError += "- Enter Contact Name";
+
+            if(strError!="")
+            {
+                TempData["CountryUpdateMessage"] = "Kindly correct following error(s) <br />" + strError;
+                return RedirectToAction("Add"); //Remain in the same form and diaplssy the Server Error
+            }
+
+            #endregion Server Side Validation*/
+
+                #region PhotoPath
             if (modelCON_Contact.File != null)
             {
                 string FilePath = "wwwroot\\Upload";

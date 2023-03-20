@@ -71,11 +71,11 @@
                         @foreach (DataRow dr in Model.Rows)
                         {
                             <tr>
-                                <td class="text-center">
+                                <td class="text-center d-flex" style="padding-right:0px;">
                                     <form method="post" asp-area="CON_Contact" asp-controller="CON_Contact" asp-action="Delete">
                                         <input type="hidden" name="ContactID" value="@Convert.ToInt32(dr["ContactID"])">
                                         <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure you want to delete : @dr["ContactName"]');"><i class="fa fa-close"></i></button>
-                                        <a class="btn btn-info btn-xs" asp-area="CON_Contact" asp-controller="CON_Contact" asp-action="Add" asp-route-contactid="@Convert.ToInt32(dr["ContactID"])"><i class="fa fa-pencil"></i></a>
+                                        <a class="btn btn-info btn-xs" style="float:right;" asp-area="CON_Contact" asp-controller="CON_Contact" asp-action="Add" asp-route-contactid="@Convert.ToInt32(dr["ContactID"])"><i class="fa fa-pencil" style="font-size:7px"></i></a>
                                     </form>
                                 </td>
                                 <td><img src="@Url.Content(dr["PhotoPath"].ToString())" alt="@dr["CountryName"]" style="height:50px; width:50px"></td>
