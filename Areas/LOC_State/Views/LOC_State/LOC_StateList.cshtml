@@ -42,7 +42,7 @@
                 <table class="table table-striped table-bordered table-hover table-header-fixed dataTable">
                     <thead>
                         <tr class="">
-                            <th>StateID</th>
+                            @*<th>StateID</th>*@
                             <th>CountryName</th>
                             <th>State Name</th>
                             <th>State Code</th>
@@ -55,7 +55,7 @@
                         @foreach (DataRow dr in Model.Rows)
                         {
                             <tr>
-                                <td>@dr["StateID"]</td>
+                                @*<td>@dr["StateID"]</td>*@
                                 <td>@dr["CountryName"]</td>
                                 <td>@dr["StateName"]</td>
                                 <td>@dr["StateCode"]</td>

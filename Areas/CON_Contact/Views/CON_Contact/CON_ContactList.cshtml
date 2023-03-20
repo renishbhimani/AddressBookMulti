@@ -46,8 +46,8 @@
                     <thead>
                         <tr class="">
                             <th>Action</th>
-                            <th>Photo</th>
-                            <th>Contact ID</th>
+                            <th>Photo</th>@*
+                            <th>Contact ID</th>*@
                             <th>Country Name</th>
                             <th>State Name</th>
                             <th>City Name</th>
@@ -79,7 +79,6 @@
                                     </form>
                                 </td>
                                 <td><img src="@Url.Content(dr["PhotoPath"].ToString())" alt="@dr["CountryName"]" style="height:50px; width:50px"></td>
-                                <td>@dr["ContactID"]</td>
                                 <td>@dr["CountryName"]</td>
                                 <td>@dr["StateName"]</td>
                                 <td>@dr["CityName"]</td>
