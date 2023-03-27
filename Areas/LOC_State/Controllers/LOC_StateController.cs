@@ -18,6 +18,22 @@ namespace AddressBookMulti.Areas.LOC_State.Controllers
         #region Index
         public IActionResult Index()
         {
+            /*#region Country Drop Down
+
+            LOC_DAL dalLOC = new LOC_DAL();
+            DataTable dataTableByCountryDropDwon = dalLOC.CountryDropDwon();
+
+            List<LOC_Country_SelectForDropDownModel> CountryDropDwonListPage = new List<LOC_Country_SelectForDropDownModel>();
+            foreach (DataRow dr in dataTableByCountryDropDwon.Rows)
+            {
+                LOC_Country_SelectForDropDownModel modelLOC_Country = new LOC_Country_SelectForDropDownModel();
+                modelLOC_Country.CountryID = Convert.ToInt32(dr["CountryID"]);
+                modelLOC_Country.CountryName = dr["CountryName"].ToString();
+                CountryDropDwonListPage.Add(modelLOC_Country);
+            }
+            ViewBag.CountryList = CountryDropDwonListPage;
+
+            #endregion*/
             LOC_DAL dalLOC = new LOC_DAL();
             DataTable dt = dalLOC.dbo_PR_LOC_State_SelectAll();
             return View("LOC_StateList", dt);

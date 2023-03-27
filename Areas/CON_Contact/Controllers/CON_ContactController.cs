@@ -81,18 +81,17 @@ namespace AddressBookMulti.Areas.CON_Contact.Controllers
             {
                 DataTable dt = dalCON.dbo_PR_CON_Contact_SelectByPK(ContactID);
 
-                if (dt  !=null && dt.Rows.Count > 0)
+                if (dt != null && dt.Rows.Count > 0)
                 {
                     CON_ContactModel modelCON_Contact = new CON_ContactModel();
                     foreach (DataRow dr in dt.Rows)
                     {
 
-                        if (!dr["CountryID"].Equals(DBNull.Value))
-                            DropDownByCountry(Convert.ToInt32(dr["CountryID"]));
-                        
+                        /*if (!dr["CountryID"].Equals(DBNull.Value))*/
+                        DropDownByCountry(Convert.ToInt32(dr["CountryID"]));
+
                         DropDownByState(Convert.ToInt32(dr["StateID"]));
 
-                        modelCON_Contact.ContactID = Convert.ToInt32(dr["ContactID"]);
                         modelCON_Contact.CountryID = Convert.ToInt32(dr["CountryID"]);
                         modelCON_Contact.StateID = Convert.ToInt32(dr["StateID"]);
                         modelCON_Contact.CityID = Convert.ToInt32(dr["CityID"]);
